@@ -47,6 +47,10 @@ class zookeeper {
     require => File[$zookeeper::config::configdir],
   }
 
+  file { "${boxen::config::envdir}/zookeeper.sh":
+    content => template('zookeeper/env.sh.erb')
+  }
+
   # Shims for shell commands
 
   zookeeper::shim { 'zkServer': }
